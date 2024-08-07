@@ -1,4 +1,4 @@
-# Notebook Summariser
+# News article Summariser
 
 ## Overview
 The `Summariser.ipynb` notebook implements a text summarization model using a pre-trained BART model from the `transformers` library. The goal of this notebook is to generate concise summaries from news articles.
