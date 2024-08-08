@@ -5,7 +5,7 @@ import torch
 app = Flask(__name__)
 
 # Load model and tokenizer
-model_dir = './saved_model'
+model_dir = '../saved_model'
 model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 device = "cuda" if torch.cuda.is_available() else "cpu"
