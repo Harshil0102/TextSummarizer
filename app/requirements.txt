@@ -1,5 +1,6 @@
 flask==2.1.1
 transformers==4.28.1
-torch==1.11.0
+torch
 nltk==3.7
 datasets==2.1.0
+gunicorn==22.0.0
