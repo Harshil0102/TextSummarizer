@@ -2,27 +2,26 @@ import unittest
 from flask import Flask
 from app import app
 
-class FlaskTestCase(unittest.TestCase):
-    # Setup before each test
+class FlaskAppTestCase(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
         self.app.testing = True
 
-    # Test for the home page
-    def test_home(self):
+    def test_home_get(self):
+        # Test GET request to home page
         result = self.app.get('/')
         self.assertEqual(result.status_code, 200)
-        self.assertIn(b'<html>', result.data)
+        self.assertIn(b'<form', result.data)  # Check if the form is in the HTML
 
-    # Test for the summarize route
-    def test_summarize(self):
-        # Example input for summarization
-        input_data = {'text': 'This is a test text for summarization.'}
-        
-        result = self.app.post('/summarize', json=input_data)
-        
+    def test_home_post(self):
+        # Test POST request with sample data
+        sample_article = "This is a test article. The summarization model should summarize this."
+        result = self.app.post('/', data=dict(
+            article=sample_article,
+            max_length=50
+        ))
         self.assertEqual(result.status_code, 200)
-        self.assertIn(b'summarized_text', result.data)
+        self.assertIn(b'Summary:', result.data)  # Check if the summary is in the HTML
 
 if __name__ == '__main__':
     unittest.main()
