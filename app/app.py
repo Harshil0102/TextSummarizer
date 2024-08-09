@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import torch
+import os
 
 app = Flask(__name__)
 
