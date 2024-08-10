@@ -1,31 +1,28 @@
-# News article Summariser
+# News Article Summariser
 
 ## Overview
-The `Summariser.ipynb` notebook implements a text summarization model using a pre-trained BART model from the `transformers` library. The goal of this notebook is to generate concise summaries from news articles.
+The `Summariser` is a Flask web application that provides text summarization for news articles using the pre-trained `Falconsai/text_summarization` model from the `transformers` library. Users can input a news article and specify the maximum summary length to generate concise summaries.
 
 ## Key Components
 
-### 1. Model and Tokenizer Initialization
-- **Description**: Loads the pre-trained BART model (`facebook/bart-large-cnn`) and tokenizer.
-- **Libraries**: `transformers`
+### 1. Model and Pipeline Initialization
+- **Description**: Loads the pre-trained text summarization model (`Falconsai/text_summarization`) using the `transformers` pipeline.
+- **Libraries**: `transformers`, `Flask`
 
-### 2. Tokenization
-- **Description**: Tokenizes the dataset for input to the model, ensuring the correct formats for source and target texts.
-- **Process**: Converts text into tokens that the BART model can understand.
+### 2. Web Application
+- **Description**: A simple web application built with Flask. It allows users to input a news article and specify the desired summary length.
+- **Endpoints**:
+  - `/` (GET, POST): The main route where users can submit an article for summarization and receive the summary.
 
-### 3. Training and Evaluation
-- **Training**:
-  - **Description**: Sets training parameters and initializes the `Seq2SeqTrainer`.
-  - **Parameters**: Includes settings for learning rate, batch size, number of epochs, etc.
-- **Evaluation**:
-  - **Description**: Evaluates the model using the ROUGE metric to measure summarization quality.
-  - **Metric**: ROUGE (Recall-Oriented Understudy for Gisting Evaluation) - evaluates the quality of summaries.
+### 3. Summarization Process
+- **Description**: Processes the input article to generate a summary based on user-defined maximum and minimum lengths.
+- **Parameters**:
+  - `max_length`: Maximum length of the summary (as specified by the user).
+  - `min_length`: Minimum length of the summary, set to half of the `max_length` by default.
 
 ## Installation
 
 ### Prerequisites
 - `transformers` library
-- `datasets` library
+- `Flask` library
 - `torch` library
-
-
