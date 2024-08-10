@@ -9,7 +9,6 @@ class FlaskAppTestCase(unittest.TestCase):
 
     def test_home_get(self):
         # Test GET request to home page
-        #test commnet
         result = self.app.get('/')
         self.assertEqual(result.status_code, 200)
         self.assertIn(b'<form', result.data)  # Check if the form is in the HTML
@@ -23,11 +22,6 @@ class FlaskAppTestCase(unittest.TestCase):
         ))
         self.assertEqual(result.status_code, 200)
         self.assertIn(b'Summary:', result.data)  # Check if the summary is in the HTML
-
-    def test_intentional_failure(self):
-        # This test is designed to fail
-        result = self.app.get('/')
-        self.assertEqual(result.status_code, 404) 
 
 if __name__ == '__main__':
     unittest.main()
