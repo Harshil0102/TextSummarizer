@@ -9,6 +9,7 @@ class FlaskAppTestCase(unittest.TestCase):
 
     def test_home_get(self):
         # Test GET request to home page
+        #test commnet
         result = self.app.get('/')
         self.assertEqual(result.status_code, 200)
         self.assertIn(b'<form', result.data)  # Check if the form is in the HTML
